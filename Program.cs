@@ -38,7 +38,7 @@ namespace ConsoleApp13
                             }
                             else
                             {
-                                if(myString!=null)
+                                if(myString!="")
                                 {
                                 inputNumbers[m] += int.Parse(myString);
                                 }
@@ -99,12 +99,15 @@ namespace ConsoleApp13
                     if (CodeMaker.SequenceEqual(inputNumbers))
                     {
                         Console.WriteLine("Congratulations you won the game");
-                        //Array.Clear(Arthplus, 0, ArthSign.Length);
+                        numberOfGuess = 0;
+                        Array.Clear(Arthplus, 0, Arthplus.Length);
+                        Array.Clear(Arthminus, 0, Arthminus.Length);
 
                     }
                     else
                     {
-                       // Array.Clear(ArthSign, 0, ArthSign.Length);
+                        Array.Clear(Arthplus, 0, Arthplus.Length);
+                        Array.Clear(Arthminus, 0, Arthminus.Length);
                         Console.WriteLine("Oops Wrong attempt!");
                     }
 
@@ -113,7 +116,8 @@ namespace ConsoleApp13
                 }
                 else
                 {
-                   // Array.Clear(ArthSign, 0, ArthSign.Length);
+                    Array.Clear(Arthplus, 0, Arthplus.Length);
+                    Array.Clear(Arthminus, 0, Arthminus.Length);
 
 
                 }
