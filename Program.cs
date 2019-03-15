@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -14,7 +14,8 @@ namespace ConsoleApp13
             int[] codeBreaker = new int[4];
             int numberOfGuess = 9;
             List<int> inputList = new List<int>();
-            string[] ArthSign = new string[4];
+            string[] Arthplus = new string[4];
+            string[] Arthminus = new string[4];
             int[] CodeMaker = new int[4] { 2, 2, 4, 6 };
            
             for (int n = 0; n < numberOfGuess; n++)
@@ -37,7 +38,10 @@ namespace ConsoleApp13
                             }
                             else
                             {
+                                if(myString!=null)
+                                {
                                 inputNumbers[m] += int.Parse(myString);
+                                }
                             }
                         }
                     }
@@ -56,33 +60,51 @@ namespace ConsoleApp13
                     {
                         if (CodeMaker[i] == inputNumbers[j] && i == j)
                         {
-                            ArthSign[i] += "+";
+                            Arthplus[i] += "+";
                             i = i + 1;
                         }
                         else if (CodeMaker[i] == inputNumbers[j] && i != j)
                         {
-                            ArthSign[i] += "-";
+                            Arthminus[i] += "-";
 
                         }
                     }
 
                 }
-                foreach (var item in ArthSign)
+            
+                foreach (var item in Arthplus)
                 {
+                    if (item != null)
+                    { 
+                    if (item.Equals("+"))
+                    { 
                     Console.Write(item + " ");
+                    }
+                    }
 
                 }
-                if (ArthSign.Length >= 4)
+                foreach (var c in Arthminus)
+                {
+                    if (c != null)
+                    {
+                        if (c.Equals("-"))
+                        {
+                            Console.Write(c + " ");
+                        }
+                    }
+
+                }
+                if (Arthplus.Length >= 4 || Arthminus.Length >= 4)
                 {
                     if (CodeMaker.SequenceEqual(inputNumbers))
                     {
                         Console.WriteLine("Congratulations you won the game");
-                        Array.Clear(ArthSign, 0, ArthSign.Length);
+                        //Array.Clear(Arthplus, 0, ArthSign.Length);
 
                     }
                     else
                     {
-                        Array.Clear(ArthSign, 0, ArthSign.Length);
+                       // Array.Clear(ArthSign, 0, ArthSign.Length);
                         Console.WriteLine("Oops Wrong attempt!");
                     }
 
@@ -91,13 +113,13 @@ namespace ConsoleApp13
                 }
                 else
                 {
-                    Array.Clear(ArthSign, 0, ArthSign.Length);
+                   // Array.Clear(ArthSign, 0, ArthSign.Length);
 
 
                 }
 
             }
-            
+           
           
             Console.ReadLine();
 
