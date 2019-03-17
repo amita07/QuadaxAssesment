@@ -16,7 +16,7 @@ namespace ConsoleApp13
             string[] Arthminus = new string[4];
             int[] CodeMaker = new int[4];
             Random random = new Random();
-            int randomnumber= random.Next(1, 6);
+            int randomnumber= random.Next(1, 7);
             for (int k = 0; k < 4; k++)
             {
                 CodeMaker[k]+= random.Next(1, 6);
