@@ -1,7 +1,7 @@
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
 namespace ConsoleApp13
 {
     class Program
@@ -9,16 +9,19 @@ namespace ConsoleApp13
         static void Main(string[] args)
         {
             int RandomGenAns = 3;
-            int[] randomGenAnsArr = new int[RandomGenAns];          
+            int[] randomGenAnsArr = new int[RandomGenAns];
             int[] inputNumbers = null;
             int[] codeBreaker = new int[4];
-            int numberOfGuess = 9;
-            List<int> inputList = new List<int>();
             string[] Arthplus = new string[4];
             string[] Arthminus = new string[4];
-            int[] CodeMaker = new int[4] { 2, 2, 4, 6 };
-           
-            for (int n = 0; n < numberOfGuess; n++)
+            int[] CodeMaker = new int[4];
+            Random random = new Random();
+            int randomnumber= random.Next(1, 6);
+            for (int k = 0; k < 4; k++)
+            {
+                CodeMaker[k]+= random.Next(1, 6);
+            }        
+            for (int numberOfGuess=9; numberOfGuess>=0; numberOfGuess--)
             {
                 Console.WriteLine("Enter 4 digit number with space between 1 to 6");
                 string CodeBreakerS = Console.ReadLine();
@@ -34,25 +37,24 @@ namespace ConsoleApp13
                             if (myString == "0" || myString == "7")
                             {
                                 Console.WriteLine("Please Enter number between 1 to 6");
-
                             }
                             else
                             {
-                                if(myString!="")
+                                if (myString != "")
                                 {
-                                inputNumbers[m] += int.Parse(myString);
+                                    inputNumbers[m] += int.Parse(myString);
                                 }
                             }
                         }
                     }
                     else
                     {
-                        Console.WriteLine("Enter digit should not be more than 4");
+                       Console.WriteLine("Enter digit should not be more than 4");
                     }
                 }
                 else
                 {
-                    Console.WriteLine("Enter 4 digit number with space between 1 to 6");
+                   Console.WriteLine("Enter 4 digit number with space between 1 to 6");
                 }
                 for (int i = 0; i < CodeMaker.Length; i++)
                 {
@@ -66,22 +68,21 @@ namespace ConsoleApp13
                         else if (CodeMaker[i] == inputNumbers[j] && i != j)
                         {
                             Arthminus[i] += "-";
-
+                          
                         }
-                    }
 
+                    }
                 }
-            
                 foreach (var item in Arthplus)
                 {
                     if (item != null)
-                    { 
-                    if (item.Equals("+"))
-                    { 
-                    Console.Write(item + " ");
-                    }
-                    }
 
+                    {
+                        if (item.Equals("+"))
+                        {
+                          Console.Write(item + " ");
+                        }
+                    }
                 }
                 foreach (var c in Arthminus)
                 {
@@ -92,7 +93,6 @@ namespace ConsoleApp13
                             Console.Write(c + " ");
                         }
                     }
-
                 }
                 if (Arthplus.Length >= 4 || Arthminus.Length >= 4)
                 {
@@ -102,37 +102,32 @@ namespace ConsoleApp13
                         numberOfGuess = 0;
                         Array.Clear(Arthplus, 0, Arthplus.Length);
                         Array.Clear(Arthminus, 0, Arthminus.Length);
-
                     }
                     else
                     {
                         Array.Clear(Arthplus, 0, Arthplus.Length);
                         Array.Clear(Arthminus, 0, Arthminus.Length);
-                        Console.WriteLine("Oops Wrong attempt!");
+                        Console.WriteLine("Oops Wrong attempt try again!!");
+                        if (numberOfGuess == 0)
+                        {
+                            Console.WriteLine("Game over, you lost the game!!");
+                        }
+
                     }
-
-
-
                 }
                 else
                 {
                     Array.Clear(Arthplus, 0, Arthplus.Length);
                     Array.Clear(Arthminus, 0, Arthminus.Length);
-
-
                 }
 
             }
-           
-          
             Console.ReadLine();
-
-
-
         }
-        
 
-        }
-    
     }
+
+}
+
+
 
